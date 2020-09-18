@@ -1,0 +1,15 @@
+{
+    "name": "sti/messenger",
+    "authors": [
+        {
+            "name": "Gil Balsiger"
+        },
+        {
+            "name": "Julien Béguin"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "symfony/var-dumper": "3.4.44"
+    }
+}
