@@ -29,7 +29,7 @@ $db->query('CREATE TABLE IF NOT EXISTS messages (
     id          INTEGER PRIMARY KEY,
     sender      INTEGER NOT NULL,
     recipient   INTEGER NOT NULL,
-    date        DATETIME NOT NULL,
+    date        DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     subject     TEXT,
     content     TEXT,
     FOREIGN KEY (sender)

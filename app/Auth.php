@@ -58,7 +58,7 @@ class Auth {
     public function getUser() {
         if(!$this->user) {
             if(isset($_SESSION['user'])) {
-                $this->user = new User($_SESSION['user']['username'], $_SESSION['user']['role'], $_SESSION['user']['status']);
+                $this->user = new User($_SESSION['user']['id'], $_SESSION['user']['username'], $_SESSION['user']['role'], $_SESSION['user']['status']);
             } else {
                 return false;
             }
