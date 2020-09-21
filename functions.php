@@ -7,7 +7,7 @@ function setFlash($content, $type = 'success') {
 
 function getFlash() {
     if (isset($_SESSION['flash'])) {
-        echo '<div class="alert alert-' . $_SESSION['flash']['type'] . ' alert-dismissible fade show">
+        echo '<div class="alert alert-' . $_SESSION['flash']['type'] . ' alert-dismissible fade show mb-4">
                     ' . $_SESSION['flash']['content'] . '
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
