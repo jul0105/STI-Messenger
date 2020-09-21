@@ -2,13 +2,19 @@
 
 use App\Database;
 
+session_start();
+
 require_once '../vendor/autoload.php';
+require_once '../functions.php';
 
 // On supprime l'ancienne db
-unlink(dirname(__DIR__) . '/db/database.sqlite');
+$dbFile = dirname(__DIR__) . '/db/database.sqlite';
+if (file_exists($dbFile)) {
+    unlink($dbFile);
+}
 
 // Création de la nouvelle base de données
-$db = new Database();
+$db = Database::getInstance();
 
 // Création des tables
 $db->query('CREATE TABLE IF NOT EXISTS users (
@@ -59,4 +65,5 @@ $req->execute([
     true
 ]);
 
-echo 'Database initilized!';
+setFlash('Database initialisée.');
+redirect('index.php');

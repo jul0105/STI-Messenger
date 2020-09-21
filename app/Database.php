@@ -8,10 +8,19 @@ class Database {
 
     private $pdo;
 
+    private static $instance = null;
+
+    public static function getInstance() {
+        if(!self::$instance) {
+            self::$instance = new Database();
+        }
+        return self::$instance;
+    }
+
     /**
      * Database constructor.
      */
-    public function __construct() {
+    private function __construct() {
         try {
             $pdo = new PDO('sqlite:' . dirname(__DIR__) . '/db/database.sqlite');
             $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
