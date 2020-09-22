@@ -9,7 +9,7 @@ Auth::restricted();
 
 $users = Database::getInstance()->query('SELECT id, username FROM users')->fetchAll();
 $userId = Auth::getInstance()->getUser()->getId();
-$req = Database::getInstance()->query("SELECT messages.*, users.username AS sender FROM messages INNER JOIN users ON messages.sender = users.id WHERE recipient = '$userId'");
+$req = Database::getInstance()->query("SELECT messages.*, users.username AS sender FROM messages INNER JOIN users ON messages.sender = users.id WHERE recipient = '$userId' ORDER BY messages.date DESC");
 $messages = $req->fetchAll();
 
 include '../parts/header.php';
@@ -36,7 +36,7 @@ include '../parts/header.php';
                         </a>
                     <?php endforeach; ?>
                     <?php if (empty($messages)): ?>
-                    <div class="text-muted font-italic text-center">Aucun message dans la boîte de réception</div>
+                        <div class="text-muted font-italic text-center">Aucun message dans la boîte de réception</div>
                     <?php endif; ?>
                 </div>
             </div>
@@ -45,13 +45,17 @@ include '../parts/header.php';
                     <?php foreach ($messages as $message): ?>
                         <div class="tab-pane" id="message-<?= $message['id'] ?>" role="tabpanel">
                             <div class="btn-group mb-4" role="group" aria-label="First group">
-                                <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i> Supprimer
-                                </button>
+                                <a href="deleteMessage.php?id=<?= $message['id'] ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Supprimer
+                                </a>
                                 <button type="button" class="btn btn-primary"><i class="fa fa-reply"></i> Répondre
                                 </button>
                             </div>
-                            <div style="overflow: auto; max-height: 600px">
-                                <?= $message['content'] ? $message['content'] : '<div class="text-muted font-italic">Message vide</div>' ?>
+                            <div>
+                                <strong>Sujet :</strong>
+                                <?= $message['subject']; ?>
+                                <div style="white-space: pre-line">
+                                    <?= $message['content'] ? $message['content'] : '<div class="text-muted font-italic">Message vide</div>' ?>
+                                </div>
                             </div>
                         </div>
                     <?php endforeach; ?>

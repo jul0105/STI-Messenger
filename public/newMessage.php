@@ -10,10 +10,16 @@ Auth::restricted();
 if(isset($_POST['recipient']) && isset($_POST['subject'])) {
     $recipient = $_POST['recipient'];
     $subject = $_POST['subject'];
-    $content = isset($_POST['content']) ? htmlentities($_POST['content']) : '';
+    $content = isset($_POST['content']) ? $_POST['content'] : '';
     $sender = Auth::getInstance()->getUser()->getId();
 
-    $req = Database::getInstance()->query("INSERT INTO messages (sender, recipient, subject, content) VALUES ('$sender', '$recipient', '$subject', '$content')");
+    $req = Database::getInstance()->prepare("INSERT INTO messages (sender, recipient, subject, content) VALUES (?, ?, ?, ?)");
+    $req->execute([
+       $sender,
+       $recipient,
+       $subject,
+       $content
+    ]);
 
     setFlash('Message envoyé avec succès.');
 }
