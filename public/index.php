@@ -8,8 +8,8 @@ require_once '../includes.php';
 Auth::restricted();
 
 $users = Database::getInstance()->query('SELECT id, username FROM users')->fetchAll();
-$req = Database::getInstance()->prepare('SELECT messages.*, users.username AS sender FROM messages INNER JOIN users ON messages.sender = users.id WHERE recipient = ?');
-$req->execute([Auth::getInstance()->getUser()->getId()]);
+$userId = Auth::getInstance()->getUser()->getId();
+$req = Database::getInstance()->query("SELECT messages.*, users.username AS sender FROM messages INNER JOIN users ON messages.sender = users.id WHERE recipient = '$userId'");
 $messages = $req->fetchAll();
 
 include '../parts/header.php';

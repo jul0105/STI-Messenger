@@ -26,13 +26,9 @@ class Auth {
      * @return boolean
      */
     public function login($username, $password) {
-        $req = Database::getInstance()->prepare('SELECT * FROM users WHERE username = ?');
-        $req->execute([
-            $username
-        ]);
-        $user = $req->fetch();
+        $user = Database::getInstance()->query("SELECT * FROM users WHERE username = '$username'")->fetch();
         if($user) {
-            if(password_verify($password, $user['password'])) {
+            if(base64_decode($user['password']) === $password) {
                 $_SESSION['user'] = $user;
                 return true;
             }

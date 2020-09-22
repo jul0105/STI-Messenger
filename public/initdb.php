@@ -46,21 +46,21 @@ $db->query('CREATE TABLE IF NOT EXISTS messages (
 $req = $db->prepare('INSERT INTO users (username, password, role, status) VALUES (?, ?, ?, ?)');
 $req->execute([
     'gil',
-    password_hash('1234', PASSWORD_DEFAULT),
+    base64_encode('1234'),
     'admin',
     true
 ]);
 $req = $db->prepare('INSERT INTO users (username, password, role, status) VALUES (?, ?, ?, ?)');
 $req->execute([
     'julien',
-    password_hash('1234', PASSWORD_DEFAULT),
+    base64_encode('1234'),
     'admin',
     true
 ]);
 $req = $db->prepare('INSERT INTO users (username, password, role, status) VALUES (?, ?, ?, ?)');
 $req->execute([
     'albert',
-    password_hash('1234', PASSWORD_DEFAULT),
+    base64_encode('1234'),
     'collaborator',
     true
 ]);
