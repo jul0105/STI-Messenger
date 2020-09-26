@@ -47,8 +47,6 @@ include '../parts/header.php';
                             <div class="btn-group mb-4" role="group" aria-label="First group">
                                 <a href="deleteMessage.php?id=<?= $message['id'] ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Supprimer
                                 </a>
-                                <button type="button" class="btn btn-primary"><i class="fa fa-reply"></i> Répondre
-                                </button>
                             </div>
                             <div>
                                 <strong>Sujet :</strong>
@@ -56,6 +54,12 @@ include '../parts/header.php';
                                 <div style="white-space: pre-line">
                                     <?= $message['content'] ? $message['content'] : '<div class="text-muted font-italic">Message vide</div>' ?>
                                 </div>
+
+                                <form action="answerMessage.php?id=<?= $message['id'] ?>" method="post">
+                                    <textarea id="content" name="content" class="form-control mb-3 mt-4" rows="3" required></textarea>
+                                    <button type="submit" class="btn btn-primary float-right ml-3"><i class="fa fa-reply"></i> Répondre</button>
+                                    <button type="reset" class="btn btn-secondary float-right"><i class="fa fa-broom"></i> Annuler</button>
+                                </form>
                             </div>
                         </div>
                     <?php endforeach; ?>
