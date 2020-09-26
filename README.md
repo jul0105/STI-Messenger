@@ -6,9 +6,9 @@
 | Lister les messages                                  | Collab + Admin | OK   |
 | Ecrire un message                                    | Collab + Admin | OK   |
 | Détails d'un message                                 | Collab + Admin | OK   |
-| Répondre à un message                                | Collab + Admin |      |
+| Répondre à un message                                | Collab + Admin | OK   |
 | Supprimer un message (peut être juste un bouton)     | Collab + Admin | OK   |
-| Changer de mot de passe                              | Collab + Admin |      |
+| Changer de mot de passe                              | Collab + Admin | OK   |
 | Ajouter un utilisateur                               | Admin          | OK   |
 | Modifier un utilisateur                              | Admin          | OK   |
 | Supprimer un utilisateur (peut être juste un bouton) | Admin          | OK   |

@@ -33,7 +33,7 @@
                             Bonjour, <?= $user->getUsername(); ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profil</a>
+                            <a class="dropdown-item" href="/profile.php"><i class="fa fa-user"></i> Profil</a>
                             <?php if ($user->getRole() === ROLE_ADMIN): ?>
                                 <a class="dropdown-item" href="/admin.php"><i class="fa fa-cog"></i> Administration</a>
                             <?php endif; ?>
