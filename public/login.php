@@ -26,15 +26,15 @@ include APP_ROOT . '/parts/header.php';
             <form action="/register.php" method="post" class="w-50 mx-auto" style="min-width: 400px; max-width: 500px">
                 <div class="form-group">
                     <label for="username">Nom d'utilisateur</label>
-                    <input type="text" id="username" name="username" class="form-control">
+                    <input type="text" id="username" name="username" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="password1">Mot de passe</label>
-                    <input type="password" id="password1" name="password1" class="form-control">
+                    <input type="password" id="password1" name="password1" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="password2">Répéter le mot de passe</label>
-                    <input type="password" id="password2" name="password2" class="form-control">
+                    <input type="password" id="password2" name="password2" class="form-control" required>
                 </div>
                 <button type="submit" role="button" class="btn btn-primary btn-block">S'inscrire</button>
             </form>
@@ -45,11 +45,11 @@ include APP_ROOT . '/parts/header.php';
             <form action="/login.php" method="post" class="w-50 mx-auto" style="min-width: 400px; max-width: 500px">
                 <div class="form-group">
                     <label for="username">Nom d'utilisateur</label>
-                    <input type="text" id="username" name="username" class="form-control">
+                    <input type="text" id="username" name="username" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Mot de passe</label>
-                    <input type="password" id="password" name="password" class="form-control">
+                    <input type="password" id="password" name="password" class="form-control" required>
                 </div>
                 <button type="submit" role="button" class="btn btn-primary btn-block">Se connecter</button>
             </form>
