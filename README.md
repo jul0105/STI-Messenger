@@ -1,18 +1,18 @@
 ## Pages :
 
-| Nom                                                  | Accès          |
-| ---------------------------------------------------- | -------------- |
-| Login                                                | Tous le monde  |
-| Lister les messages                                  | Collab + Admin |
-| Ecrire un message                                    | Collab + Admin |
-| Détails d'un message                                 | Collab + Admin |
-| Répondre à un message                                | Collab + Admin |
-| Supprimer un message (peut être juste un bouton)     | Collab + Admin |
-| Changer de mot de passe                              | Collab + Admin |
-| Ajouter un utilistateur                              | Admin          |
-| Modifier un utilisateur                              | Admin          |
-| Supprimer un utilisateur (peut être juste un bouton) | Admin          |
-| Lister les utilisateurs (pas demandé mais utile)     | Admin          |
+| Nom                                                  | Accès          |      |
+| ---------------------------------------------------- | -------------- | ---- |
+| Login                                                | Tous le monde  | OK   |
+| Lister les messages                                  | Collab + Admin | OK   |
+| Ecrire un message                                    | Collab + Admin | OK   |
+| Détails d'un message                                 | Collab + Admin | OK   |
+| Répondre à un message                                | Collab + Admin |      |
+| Supprimer un message (peut être juste un bouton)     | Collab + Admin | OK   |
+| Changer de mot de passe                              | Collab + Admin |      |
+| Ajouter un utilisateur                               | Admin          | OK   |
+| Modifier un utilisateur                              | Admin          | OK   |
+| Supprimer un utilisateur (peut être juste un bouton) | Admin          | OK   |
+| Lister les utilisateurs (pas demandé mais utile)     | Admin          | OK   |
 
 
 

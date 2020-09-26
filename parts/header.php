@@ -12,7 +12,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
     <div class="container">
-        <a class="navbar-brand" href="#">STI Messenger</a>
+        <a class="navbar-brand" href="/">STI Messenger</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profil</a>
                             <?php if ($user->getRole() === ROLE_ADMIN): ?>
-                                <a class="dropdown-item" href="#"><i class="fa fa-cog"></i> Administration</a>
+                                <a class="dropdown-item" href="/admin.php"><i class="fa fa-cog"></i> Administration</a>
                             <?php endif; ?>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout.php"><i class="fa fa-sign-out-alt"></i> Déconnexion</a>

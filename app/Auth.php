@@ -69,6 +69,11 @@ class Auth {
         if(!self::getInstance()->isLoggedIn()) {
             redirect('login.php');
         }
+
+        if ($role == ROLE_ADMIN && self::getInstance()->getUser()->getRole() != ROLE_ADMIN) {
+            setFlash('Vous n\'avez pas accès à cette resource.', 'danger');
+            redirect('index.php');
+        }
     }
 
 }
