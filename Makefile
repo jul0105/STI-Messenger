@@ -1,7 +1,6 @@
 user := $(shell id -u)
 group := $(shell id -g)
 dc := USER_ID=$(user) GROUP_ID=$(group) docker-compose
-dr := $(dc) run --rm
 de := docker-compose exec
 
 .DEFAULT_GOAL := help
@@ -14,12 +13,18 @@ up: ## Lance les conteneurs
 	$(dc) up -d
 
 .PHONY: build
-build: ## Lance les conteneurs
+build: ## Construit les conteneurs
 	$(dc) build
 
 .PHONY: dep
 dep: ## Install les dépendances PHP
 	$(de) php composer install
+
+.PHONY: init
+init: ## Initialise et lance les conteneurs
+	build
+	up
+	dep
 
 .PHONY: stop
 stop: ## Stop les conteneurs
