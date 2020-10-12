@@ -26,6 +26,12 @@ Besoin d'aide ? : `make help`
 
 
 
+## Specifications
+
+Les sépcifications de l'applications sont disponibles dans le fichier `SPECIFICATIONS.md`.
+
+
+
 ## Utilisation
 
 ### Inscription/connexion
