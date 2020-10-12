@@ -49,8 +49,14 @@ include '../parts/header.php';
                                 </a>
                             </div>
                             <div>
-                                <strong>Sujet :</strong>
-                                <?= $message['subject']; ?>
+                                <div class="mb-3">
+                                    <strong>De :</strong>
+                                    <?= $message['sender']; ?>
+                                </div>
+                                <div>
+                                    <strong>Sujet :</strong>
+                                    <?= $message['subject']; ?>
+                                </div>
                                 <div style="white-space: pre-line">
                                     <?= $message['content'] ? $message['content'] : '<div class="text-muted font-italic">Message vide</div>' ?>
                                 </div>
