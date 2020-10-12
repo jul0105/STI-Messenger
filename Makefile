@@ -21,10 +21,7 @@ dep: ## Install les dépendances PHP
 	$(de) php composer install
 
 .PHONY: init
-init: ## Initialise et lance les conteneurs
-	build
-	up
-	dep
+init: build up dep ## Initialise et lance les conteneurs
 
 .PHONY: stop
 stop: ## Stop les conteneurs
