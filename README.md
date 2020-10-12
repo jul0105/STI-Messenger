@@ -1,6 +1,7 @@
 # STI : Projet 1 - Système de messagerie
 
 > Auteurs : Gil Balsiger & Julien Béguin
+>
 > Date : 12.10.20
 
 
