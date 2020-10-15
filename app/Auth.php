@@ -28,7 +28,7 @@ class Auth {
     public function login($username, $password) {
         $user = Database::getInstance()->query("SELECT * FROM users WHERE username = '$username'")->fetch();
         if($user) {
-            if(base64_decode($user['password']) === $password) {
+            if(base64_decode($user['password']) === $password && $user['status']) {
                 $_SESSION['user'] = $user;
                 return true;
             }
