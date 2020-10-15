@@ -14,7 +14,7 @@ cd STI-Messenger/
 make init
 ```
 
-Cette commande permet de construire et lancer les conteneurs ainsi que d'installer les dépendances nécessaires. Lorsque l'initialisation est terminé, vous pouvez accéder à l'application avec l'URL suivant : **http://localhost:8080/**.
+Cette commande permet de construire et lancer les conteneurs ainsi que d'installer les dépendances nécessaires. Lorsque l'initialisation est terminée, vous pouvez accéder à l'application avec l'URL suivant : **http://localhost:8080/**.
 
 ### Start/Stop
 
@@ -26,9 +26,9 @@ Besoin d'aide ? : `make help`
 
 
 
-## Specifications
+## Spécifications
 
-Les sépcifications de l'applications sont disponibles dans le fichier `SPECIFICATIONS.md`.
+Les spécifications de l'application sont disponibles dans le fichier `SPECIFICATIONS.md`.
 
 
 
@@ -42,9 +42,9 @@ Cette page permet d'accéder au reste du site. Le formulaire de gauche permet de
 
 ----
 
-### Boite de réception
+### Boîte de réception
 
-Ceci est la page principale du site. Elle permet de recevoir, répondre, supprimer et envoyer des message à d'autres utilisateurs. Le menu de gauche permet de lister un aperçu des messages reçus. En cliquant sur un message, ce dernier est chargé dans la partie de droite. On peut alors voir le contenu du message ainsi que l'historique de la conversation (apparaissant en citation). Le champs textuel en dessous du message permet d'y répondre directement :
+Ceci est la page principale du site. Elle permet de recevoir, répondre, supprimer et envoyer des messages à d'autres utilisateurs. Le menu de gauche permet de lister un aperçu des messages reçus. En cliquant sur un message, ce dernier est chargé dans la partie de droite. On peut alors voir le contenu du message ainsi que l'historique de la conversation (apparaissant en citation). Le champ textuel en dessous du message permet d'y répondre directement :
 
 ![](doc/img/inbox.png)
 
@@ -56,9 +56,9 @@ Création d'un nouveau message :
 
 ----
 
-### Profile
+### Profil
 
-La page de profile permet uniquement de changer de mot de passe. Elle est accessible depuis le bouton à droite de la bar de navigation supérieur :
+La page de profil permet uniquement de changer de mot de passe. Elle est accessible depuis le bouton à droite de la barre de navigation supérieur :
 
 ![](doc/img/profile.png)
 
@@ -73,5 +73,7 @@ La page d'administration est uniquement accessible au utilisateur possédant le 
 ---
 
 Création d'un nouvel utilisateur :
+
+Tous les champs doivent être saisis pour pouvoir continuer.
 
 ![](doc/img/new_user.png)

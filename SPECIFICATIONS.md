@@ -6,7 +6,7 @@
 | ---------------------------------------------------- | -------------- | ------ |
 | Login                                                | Tous le monde  | OK     |
 | Lister les messages                                  | Collab + Admin | OK     |
-| Ecrire un message                                    | Collab + Admin | OK     |
+| Écrire un message                                    | Collab + Admin | OK     |
 | Détails d'un message                                 | Collab + Admin | OK     |
 | Répondre à un message                                | Collab + Admin | OK     |
 | Supprimer un message (peut être juste un bouton)     | Collab + Admin | OK     |
