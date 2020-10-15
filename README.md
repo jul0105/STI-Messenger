@@ -22,9 +22,7 @@ Cette commande permet de construire et lancer les conteneurs ainsi que d'install
 
 **Arrêter les conteneurs** : `make stop`
 
-Besoin d'aide ? : `make help`
-
-
+Besoin d'aide ?  : `make help`
 
 ## Spécifications
 
