@@ -34,7 +34,17 @@ Les spécifications de l'application sont disponibles dans le fichier `SPECIFICA
 
 ### Inscription/connexion
 
-Cette page permet d'accéder au reste du site. Le formulaire de gauche permet de s'enregistrer alors que le formulaire de droite permet de se connecter :
+Cette page permet d'accéder au reste du site. Le formulaire de gauche permet de s'enregistrer alors que le formulaire de droite permet de se connecter. 
+
+**Voici les informations de connexion des utilisateurs déjà inscrits :**
+
+- `julien` : `1234` (admin)
+
+- `gil` : `1234` (admin)
+
+- `albert` : `1234` (collaborateur)
+
+
 
 ![](doc/img/login.png)
 
