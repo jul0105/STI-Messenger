@@ -3,7 +3,11 @@
 
 namespace App;
 
-
+/**
+ * Class Auth
+ * Singleton to manage authentification
+ * @package App
+ */
 class Auth {
 
     private $user = null;
@@ -11,7 +15,7 @@ class Auth {
     private static $instance = null;
 
     /**
-     * @return Auth
+     * @return Auth Singleton instance
      */
     public static function getInstance() {
         if(!self::$instance) {
@@ -21,9 +25,10 @@ class Auth {
     }
 
     /**
+     * Try to login a user
      * @param $username
      * @param $password
-     * @return boolean
+     * @return boolean True if login succeed
      */
     public function login($username, $password) {
         $user = Database::getInstance()->query("SELECT * FROM users WHERE username = '$username'")->fetch();
@@ -36,6 +41,9 @@ class Auth {
         return false;
     }
 
+    /**
+     * Clear session for user
+     */
     public function logout() {
         unset($_SESSION['user']);
         $this->user = null;
@@ -49,6 +57,7 @@ class Auth {
     }
 
     /**
+     * Get the currently logged in user
      * @return User|false
      */
     public function getUser() {
@@ -63,7 +72,8 @@ class Auth {
     }
 
     /**
-     * @param string $role ROLE_COLLABORATOR ou ROLE_ADMIN
+     * Redirect the user to login page if not enough rights
+     * @param string $role ROLE_COLLABORATOR or ROLE_ADMIN
      */
     public static function restricted($role = ROLE_COLLABORATOR) {
         if(!self::getInstance()->isLoggedIn()) {

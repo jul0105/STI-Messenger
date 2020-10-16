@@ -26,28 +26,28 @@ class User {
     }
 
     /**
-     * @return mixed
+     * @return mixed User ID
      */
     public function getId() {
         return $this->id;
     }
 
     /**
-     * @return mixed
+     * @return mixed Username
      */
     public function getUsername() {
         return $this->username;
     }
 
     /**
-     * @return mixed
+     * @return mixed Role: admin or collaborator
      */
     public function getRole() {
         return $this->role;
     }
 
     /**
-     * @return mixed
+     * @return mixed Status: active or inactive
      */
     public function getStatus() {
         return $this->status;
