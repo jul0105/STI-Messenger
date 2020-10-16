@@ -1,4 +1,9 @@
 <?php
+/**
+ * STI : Projet 1 - Messenger
+ * Authors : Gil Baliser & Julien Béguin
+ * Date : 16.10.2020
+ */
 
 use App\Auth;
 use App\Database;
