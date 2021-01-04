@@ -14,7 +14,10 @@ Auth::restricted();
 
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
-    $req = Database::getInstance()->query("DELETE FROM messages WHERE id = '$id'");
+    // [Projet2] Prepare SQL statement
+    $req = Database::getInstance()->prepare("DELETE FROM messages WHERE id = ?");
+    $req->execute([$id]);
+
     setFlash('Message supprimé.');
 }
 

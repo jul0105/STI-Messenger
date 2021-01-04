@@ -14,7 +14,9 @@ Auth::restricted();
 
 $users = Database::getInstance()->query('SELECT id, username FROM users')->fetchAll();
 $userId = Auth::getInstance()->getUser()->getId();
-$req = Database::getInstance()->query("SELECT messages.*, users.username AS sender FROM messages INNER JOIN users ON messages.sender = users.id WHERE recipient = '$userId' ORDER BY messages.date DESC");
+// [Projet2] Prepare SQL statement
+$req = Database::getInstance()->prepare("SELECT messages.*, users.username AS sender FROM messages INNER JOIN users ON messages.sender = users.id WHERE recipient = ? ORDER BY messages.date DESC");
+$req->execute([$userId]);
 $messages = $req->fetchAll();
 
 include '../parts/header.php';

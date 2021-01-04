@@ -15,7 +15,10 @@ if (!empty($_POST) && isset($_POST['username']) && isset($_POST['password1']) &&
     $password = base64_encode($_POST['password1']);
     $password2 = base64_encode($_POST['password2']);
 
-    $username_valid = Database::getInstance()->query("SELECT count(username) AS nb FROM users WHERE username = '".$username."'")->fetch();
+    // [Projet2] Prepare SQL statement
+    $req = Database::getInstance()->prepare("SELECT count(username) AS nb FROM users WHERE username = ?");
+    $req->execute([$username]);
+    $username_valid = $req->fetch();
 
     if ($username_valid['nb'] == '0') {
         if ($password == $password2) {

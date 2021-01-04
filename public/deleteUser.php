@@ -14,7 +14,10 @@ Auth::restricted(ROLE_ADMIN);
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $req = Database::getInstance()->query("DELETE FROM users WHERE id = '$id'");
+    // [Projet2] Prepare SQL statement
+    $req = Database::getInstance()->prepare("DELETE FROM users WHERE id = ?");
+    $req->execute([$id]);
+
     setFlash('Utilisateur supprimé.');
 }
 

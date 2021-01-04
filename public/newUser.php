@@ -15,7 +15,11 @@ Auth::restricted(ROLE_ADMIN);
 $edit = false;
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $user = Database::getInstance()->query("SELECT username, role, status FROM users WHERE id = '$id'")->fetch();
+    // [Projet2] Prepare SQL statement
+    $req = Database::getInstance()->prepare("SELECT username, role, status FROM users WHERE id = ?");
+    $req->execute([$id]);
+    $user = $req->fetch();
+
     $username = $user['username'];
     $role = $user['role'];
     $status = $user['status'];

@@ -18,7 +18,10 @@ if(isset($_GET['id']) && isset($_POST['oldPassword']) && isset($_POST['newPasswo
     $newPassword = base64_encode($_POST['newPassword']);
     $newPasswordRepeat = base64_encode($_POST['newPasswordRepeat']);
 
-    $user = Database::getInstance()->query("SELECT * FROM users WHERE id = $id")->fetch();
+    // [Projet2] Prepare SQL statement
+    $req = Database::getInstance()->prepare("SELECT * FROM users WHERE id = ?");
+    $req->execute([$id]);
+    $user = $req->fetch();
 
     if ($user['password'] == $oldPassword) {
         if ($newPassword == $newPasswordRepeat) {
