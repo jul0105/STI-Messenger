@@ -6,20 +6,13 @@
  */
 
 function sanitizeTextInput($input) {
-    $sanitizedInput = $input;
-    // TODO implement
-    return $sanitizedInput;
+    return htmlentities($input, ENT_QUOTES, 'UTF-8');
 }
 
 function sanitizeIntegerInput($input) {
-    $sanitizedInput = $input;
-    // TODO implement
-    return $sanitizedInput;
+    return filter_var($input, FILTER_SANITIZE_NUMBER_INT);
 }
 
 function sanitizeRoleInput($input) {
-    $sanitizedInput = $input;
-    // TODO implement
-    return $sanitizedInput;
+    return in_array($input, array(ROLE_COLLABORATOR, ROLE_ADMIN)) ? $input : DEFAULT_ROLE;
 }
-
