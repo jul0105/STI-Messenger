@@ -41,7 +41,8 @@ class Auth {
         $user = $req->fetch();
 
         if($user) {
-            if(base64_decode($user['password']) === $password && $user['status']) {
+            // [Projet2] Store strongly hashed password
+            if (password_verify($password, $user['password']) && $user['status'] == STATUS_ACTIVE) {
                 $_SESSION['user'] = $user;
                 return true;
             }

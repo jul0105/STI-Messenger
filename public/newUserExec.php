@@ -14,7 +14,10 @@ Auth::restricted(ROLE_ADMIN);
 
 if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['role'])) {
     $username = $_POST['username'];
-    $password = base64_encode($_POST['password']);
+
+    // [Projet2] Store strongly hashed password
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+
     $role = $_POST['role'];
     $status = isset($_POST['status']);
 

@@ -14,17 +14,17 @@ Auth::restricted();
 
 if(isset($_GET['id']) && isset($_POST['oldPassword']) && isset($_POST['newPassword']) && isset($_POST['newPasswordRepeat'])) {
     $id = $_GET['id'];
-    $oldPassword = base64_encode($_POST['oldPassword']);
-    $newPassword = base64_encode($_POST['newPassword']);
-    $newPasswordRepeat = base64_encode($_POST['newPasswordRepeat']);
 
     // [Projet2] Prepare SQL statement
     $req = Database::getInstance()->prepare("SELECT * FROM users WHERE id = ?");
     $req->execute([$id]);
     $user = $req->fetch();
 
-    if ($user['password'] == $oldPassword) {
-        if ($newPassword == $newPasswordRepeat) {
+    // [Projet2] Store strongly hashed password
+    if (password_verify($_POST['oldPassword'], $user['password'])) {
+        if ($_POST['newPassword'] == $_POST['newPasswordRepeat']) {
+            $newPassword = password_hash($_POST['newPassword'], PASSWORD_BCRYPT);
+            
             $req = Database::getInstance()->prepare('UPDATE users SET password = ? WHERE id = ?');
             $req->execute([
                 $newPassword,

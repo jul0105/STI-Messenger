@@ -12,8 +12,6 @@ require_once '../includes.php';
 
 if (!empty($_POST) && isset($_POST['username']) && isset($_POST['password1']) && isset($_POST['password2'])) {
     $username = $_POST['username'];
-    $password = base64_encode($_POST['password1']);
-    $password2 = base64_encode($_POST['password2']);
 
     // [Projet2] Prepare SQL statement
     $req = Database::getInstance()->prepare("SELECT count(username) AS nb FROM users WHERE username = ?");
@@ -21,7 +19,10 @@ if (!empty($_POST) && isset($_POST['username']) && isset($_POST['password1']) &&
     $username_valid = $req->fetch();
 
     if ($username_valid['nb'] == '0') {
-        if ($password == $password2) {
+        if ($_POST['password1'] == $_POST['password2']) {
+            // [Projet2] Store strongly hashed password
+            $password = password_hash($_POST['password1'], PASSWORD_BCRYPT);
+
             $req = Database::getInstance()->prepare("INSERT INTO users (username, password, role, status) VALUES (?, ?, ?, ?)");
             $req->execute([
                 $username,
