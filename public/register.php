@@ -11,7 +11,8 @@ use App\Database;
 require_once '../includes.php';
 
 if (!empty($_POST) && isset($_POST['username']) && isset($_POST['password1']) && isset($_POST['password2'])) {
-    $username = $_POST['username'];
+    // [Project2] Sanitize input
+    $username = sanitizeTextInput($_POST['username']);
 
     // [Projet2] Prepare SQL statement
     $req = Database::getInstance()->prepare("SELECT count(username) AS nb FROM users WHERE username = ?");

@@ -13,14 +13,16 @@ require_once '../includes.php';
 Auth::restricted();
 
 if(isset($_GET['id']) && isset($_POST['content'])) {
-    $id = $_GET['id'];
+    // [Project2] Sanitize input
+    $id = sanitizeIntegerInput($_GET['id']);
+    $contentInput = sanitizeTextInput($_POST['content']);
 
     // [Projet2] Prepare SQL statement
     $req = Database::getInstance()->prepare("SELECT messages.*, users.id AS sender FROM messages INNER JOIN users ON messages.sender = users.id WHERE messages.id = ?");
     $req->execute([$id]);
     $message = $req->fetch();
 
-    $content = '<blockquote>'.$message['content'].'</blockquote>'.$_POST['content'];
+    $content = '<blockquote>'.$message['content'].'</blockquote>'.$contentInput;
     $sender = $message['recipient'];
     $recipient = $message['sender'];
     $subject = 'RE: '.$message['subject'];

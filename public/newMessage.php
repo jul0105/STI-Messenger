@@ -13,9 +13,11 @@ require_once '../includes.php';
 Auth::restricted();
 
 if(isset($_POST['recipient']) && isset($_POST['subject'])) {
-    $recipient = $_POST['recipient'];
-    $subject = $_POST['subject'];
-    $content = isset($_POST['content']) ? $_POST['content'] : '';
+    // [Project2] Sanitize input
+    $recipient = sanitizeTextInput($_POST['recipient']);
+    $subject = sanitizeTextInput($_POST['subject']);
+    $content = sanitizeTextInput(isset($_POST['content']) ? $_POST['content'] : '');
+
     $sender = Auth::getInstance()->getUser()->getId();
 
     $req = Database::getInstance()->prepare("INSERT INTO messages (sender, recipient, subject, content) VALUES (?, ?, ?, ?)");

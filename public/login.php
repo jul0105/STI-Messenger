@@ -10,8 +10,10 @@ use App\Auth;
 require_once '../includes.php';
 
 if (!empty($_POST) && isset($_POST['username']) && isset($_POST['password'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    // [Project2] Sanitize input
+    $username = sanitizeTextInput($_POST['username']);
+    $password = $_POST['password']; // password doesn't need to be sanitized because it will be hashed
+
     if(Auth::getInstance()->login($username, $password)) {
         setFlash('Vous êtes maintenant connecté.');
         redirect('index.php');

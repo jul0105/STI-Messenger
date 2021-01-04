@@ -13,7 +13,8 @@ require_once '../includes.php';
 Auth::restricted();
 
 if(isset($_GET['id']) && isset($_POST['oldPassword']) && isset($_POST['newPassword']) && isset($_POST['newPasswordRepeat'])) {
-    $id = $_GET['id'];
+    // [Project2] Sanitize input
+    $id = sanitizeIntegerInput($_GET['id']);
 
     // [Projet2] Prepare SQL statement
     $req = Database::getInstance()->prepare("SELECT * FROM users WHERE id = ?");
@@ -24,7 +25,7 @@ if(isset($_GET['id']) && isset($_POST['oldPassword']) && isset($_POST['newPasswo
     if (password_verify($_POST['oldPassword'], $user['password'])) {
         if ($_POST['newPassword'] == $_POST['newPasswordRepeat']) {
             $newPassword = password_hash($_POST['newPassword'], PASSWORD_BCRYPT);
-            
+
             $req = Database::getInstance()->prepare('UPDATE users SET password = ? WHERE id = ?');
             $req->execute([
                 $newPassword,

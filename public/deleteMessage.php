@@ -13,7 +13,9 @@ require_once '../includes.php';
 Auth::restricted();
 
 if(isset($_GET['id'])) {
-    $id = $_GET['id'];
+    // [Project2] Sanitize input
+    $id = sanitizeIntegerInput($_GET['id']);
+
     // [Projet2] Prepare SQL statement
     $req = Database::getInstance()->prepare("DELETE FROM messages WHERE id = ?");
     $req->execute([$id]);

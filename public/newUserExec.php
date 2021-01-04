@@ -13,12 +13,14 @@ require_once '../includes.php';
 Auth::restricted(ROLE_ADMIN);
 
 if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['role'])) {
-    $username = $_POST['username'];
+    // [Project2] Sanitize input
+    $username = sanitizeTextInput($_POST['username']);
+    $role = sanitizeRoleInput($_POST['role']);
 
     // [Projet2] Store strongly hashed password
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-    $role = $_POST['role'];
+
     $status = isset($_POST['status']);
 
     $req = Database::getInstance()->prepare("INSERT INTO users (username, password, role, status) VALUES (?, ?, ?, ?)");

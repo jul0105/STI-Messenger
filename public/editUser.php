@@ -13,14 +13,17 @@ require_once '../includes.php';
 Auth::restricted(ROLE_ADMIN);
 
 if(isset($_GET['id'])) {
-    $id = $_GET['id'];
+    // [Project2] Sanitize input
+    $id = sanitizeIntegerInput($_GET['id']);
+
     if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['password']) && !empty($_POST['password']) && isset($_POST['role']) && !empty($_POST['role'])) {
-        $username = $_POST['username'];
+        // [Project2] Sanitize input
+        $username = sanitizeTextInput($_POST['username']);
+        $role = sanitizeRoleInput(['role']);
 
         // [Projet2] Store strongly hashed password
         $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-        $role = $_POST['role'];
         $status = isset($_POST['status']);
 
         $req = Database::getInstance()->prepare('UPDATE users SET username = ?, password = ?, role = ?, status = ? WHERE id = ?');

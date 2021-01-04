@@ -14,7 +14,9 @@ Auth::restricted(ROLE_ADMIN);
 
 $edit = false;
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+    // [Project2] Sanitize input
+    $id = sanitizeIntegerInput($_GET['id']);
+
     // [Projet2] Prepare SQL statement
     $req = Database::getInstance()->prepare("SELECT username, role, status FROM users WHERE id = ?");
     $req->execute([$id]);
