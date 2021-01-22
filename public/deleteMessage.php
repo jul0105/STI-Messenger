@@ -16,11 +16,19 @@ if(isset($_GET['id'])) {
     // [Project2] Sanitize input
     $id = sanitizeIntegerInput($_GET['id']);
 
-    // [Projet2] Prepare SQL statement
-    $req = Database::getInstance()->prepare("DELETE FROM messages WHERE id = ?");
+    // [Project2] User cannot delete another user's message
+    $req = Database::getInstance()->prepare("SELECT recipient FROM messages WHERE id = ?");
     $req->execute([$id]);
+    $user = $req->fetch();
 
-    setFlash('Message supprimé.');
+    if ($user['recipient'] == AUTH::getInstance()->getUser()->getId()) {
+
+        // [Projet2] Prepare SQL statement
+        $req = Database::getInstance()->prepare("DELETE FROM messages WHERE id = ?");
+        $req->execute([$id]);
+
+        setFlash('Message supprimé.');
+    }
 }
 
 redirect('index.php');

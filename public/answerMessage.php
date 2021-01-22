@@ -23,9 +23,11 @@ if(isset($_GET['id']) && isset($_POST['content'])) {
     $message = $req->fetch();
 
     $content = '<blockquote>'.$message['content'].'</blockquote>'.$contentInput;
-    $sender = $message['recipient'];
     $recipient = $message['sender'];
     $subject = 'RE: '.$message['subject'];
+
+    // [Project2] Avoid answer's spoofing where an attacker could set an arbitrary sender
+    $sender = Auth::getInstance()->getUser()->getId();
 
     $req = Database::getInstance()->prepare("INSERT INTO messages (sender, recipient, subject, content) VALUES (?, ?, ?, ?)");
     $req->execute([

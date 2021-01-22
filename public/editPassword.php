@@ -16,6 +16,13 @@ if(isset($_GET['id']) && isset($_POST['oldPassword']) && isset($_POST['newPasswo
     // [Project2] Sanitize input
     $id = sanitizeIntegerInput($_GET['id']);
 
+    // [Project2] User cannot modify another user's password
+    if ($id != Auth::getInstance()->getUser()->getId()) {
+        setFlash('Mot de passe modifié avec succès.');
+        redirect('profile.php');
+        return;
+    }
+
     // [Projet2] Prepare SQL statement
     $req = Database::getInstance()->prepare("SELECT * FROM users WHERE id = ?");
     $req->execute([$id]);
