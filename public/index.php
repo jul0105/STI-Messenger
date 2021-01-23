@@ -14,6 +14,7 @@ Auth::restricted();
 
 $users = Database::getInstance()->query('SELECT id, username FROM users')->fetchAll();
 $userId = Auth::getInstance()->getUser()->getId();
+
 // [Projet2] Prepare SQL statement
 $req = Database::getInstance()->prepare("SELECT messages.*, users.username AS sender FROM messages INNER JOIN users ON messages.sender = users.id WHERE recipient = ? ORDER BY messages.date DESC");
 $req->execute([$userId]);
@@ -36,10 +37,10 @@ include '../parts/header.php';
                            data-toggle="list"
                            href="#message-<?= $message['id'] ?>" role="tab">
                             <div class="d-flex justify-content-between">
-                                <h5><?= $message['sender'] ?></h5>
+                                <h5><?= sanitizeOutput($message['sender']) ?></h5>
                                 <small><?= date('d.m.Y à H:i', strtotime($message['date'])) ?></small>
                             </div>
-                            <div><?= $message['subject'] ?></div>
+                            <div><?= sanitizeOutput($message['subject']) ?></div>
                         </a>
                     <?php endforeach; ?>
                     <?php if (empty($messages)): ?>
@@ -58,14 +59,14 @@ include '../parts/header.php';
                             <div>
                                 <div class="mb-3">
                                     <strong>De :</strong>
-                                    <?= $message['sender']; ?>
+                                    <?= sanitizeOutput($message['sender']); ?>
                                 </div>
                                 <div>
                                     <strong>Sujet :</strong>
-                                    <?= $message['subject']; ?>
+                                    <?= sanitizeOutput($message['subject']); ?>
                                 </div>
                                 <div style="white-space: pre-line">
-                                    <?= $message['content'] ? $message['content'] : '<div class="text-muted font-italic">Message vide</div>' ?>
+                                    <?= $message['content'] ? sanitizeOutput($message['content']) : '<div class="text-muted font-italic">Message vide</div>' ?>
                                 </div>
 
                                 <form action="answerMessage.php?id=<?= $message['id'] ?>" method="post">
