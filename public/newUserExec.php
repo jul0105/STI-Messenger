@@ -1,8 +1,13 @@
 <?php
 /**
- * STI : Projet 1 - Messenger
+ * STI : Project 1 - Messenger
  * Authors : Gil Baliser & Julien Béguin
  * Date : 16.10.2020
+ * ----------
+ * STI : Project 2 - Secure Messenger
+ * Authors : Julien Béguin & Gwendoline Dössegger
+ * Date : 23.01.2021
+ * Modification are tagged with "[Project2]" comment
  */
 
 use App\Auth;
@@ -24,7 +29,7 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['role'
     $username = sanitizeTextInput($_POST['username']);
     $role = sanitizeRoleInput($_POST['role']);
 
-    // [Projet2] Store strongly hashed password
+    // [Project2] Store strongly hashed password
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
 

@@ -1,8 +1,13 @@
 <?php
 /**
- * STI : Projet 1 - Messenger
+ * STI : Project 1 - Messenger
  * Authors : Gil Baliser & Julien Béguin
  * Date : 16.10.2020
+ * ----------
+ * STI : Project 2 - Secure Messenger
+ * Authors : Julien Béguin & Gwendoline Dössegger
+ * Date : 23.01.2021
+ * Modification are tagged with "[Project2]" comment
  */
 
 namespace App;
@@ -36,13 +41,13 @@ class Auth {
      * @throws \Exception
      */
     public function login($username, $password) {
-        // [Projet2] Prepare SQL statement
+        // [Project2] Prepare SQL statement
         $req = Database::getInstance()->prepare("SELECT * FROM users WHERE username = ?");
         $req->execute([$username]);
         $user = $req->fetch();
 
         if($user) {
-            // [Projet2] Store strongly hashed password
+            // [Project2] Store strongly hashed password
             if (password_verify($password, $user['password']) && $user['status'] == STATUS_ACTIVE) {
                 $_SESSION['user'] = $user;
 

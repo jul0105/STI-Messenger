@@ -1,8 +1,13 @@
 <?php
 /**
- * STI : Projet 1 - Messenger
+ * STI : Project 1 - Messenger
  * Authors : Gil Baliser & Julien Béguin
  * Date : 16.10.2020
+ * ----------
+ * STI : Project 2 - Secure Messenger
+ * Authors : Julien Béguin & Gwendoline Dössegger
+ * Date : 23.01.2021
+ * Modification are tagged with "[Project2]" comment
  */
 
 use App\Auth;
@@ -14,14 +19,14 @@ if (!empty($_POST) && isset($_POST['username']) && isset($_POST['password1']) &&
     // [Project2] Sanitize input
     $username = sanitizeTextInput($_POST['username']);
 
-    // [Projet2] Prepare SQL statement
+    // [Project2] Prepare SQL statement
     $req = Database::getInstance()->prepare("SELECT count(username) AS nb FROM users WHERE username = ?");
     $req->execute([$username]);
     $username_valid = $req->fetch();
 
     if ($username_valid['nb'] == '0') {
         if ($_POST['password1'] == $_POST['password2']) {
-            // [Projet2] Store strongly hashed password
+            // [Project2] Store strongly hashed password
             $password = password_hash($_POST['password1'], PASSWORD_BCRYPT);
 
             $req = Database::getInstance()->prepare("INSERT INTO users (username, password, role, status) VALUES (?, ?, ?, ?)");

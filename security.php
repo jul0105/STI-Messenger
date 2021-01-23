@@ -1,8 +1,9 @@
 <?php
 /**
- * STI : Projet 2 - Messenger
- * Authors : Julien Béguin
- * Date : 04.01.2021
+ * STI : Project 2 - Secure Messenger
+ * Authors : Julien Béguin & Gwendoline Dössegger
+ * Date : 23.01.2021
+ * Modification are tagged with "[Project2]" comment
  */
 
 /*
