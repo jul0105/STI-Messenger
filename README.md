@@ -1,15 +1,15 @@
-# STI : Projet 1 - Système de messagerie
+# STI : Projet 2 - Système de messagerie sécurisé
 
-> Auteurs : Gil Balsiger & Julien Béguin
+> Auteurs : Julien Béguin & Gwendoline Dössegger
 >
-> Date : 12.10.20
+> Date : 23.01.2021
 
 
 
 ## Installation
 
 ```
-git clone --depth=1 https://github.com/balsigergil/STI-Messenger.git
+git clone --depth=1 https://github.com/jul0105/STI-Messenger.git
 cd STI-Messenger/
 make init
 ```
@@ -23,6 +23,23 @@ Cette commande permet de construire et lancer les conteneurs ainsi que d'install
 **Arrêter les conteneurs** : `make stop`
 
 Besoin d'aide ?  : `make help`
+
+
+## Modifications par rapport au projet 1
+
+Toutes les modifications effectuées lors du projet 2 commencent par un commentaire "[Project2]".
+
+Voici la liste des modifications effectuées :
+
+- Préparer toutes les requêtes SQL
+- Hachage fort des mots de passes pour éviter qu’ils puissent être utilisé même en cas de fuite de la DB
+- sanitizer les entrées utilisateurs avant de les persister dans la base de donnée pour éviter les attaque XSS
+- Vérifier que l’utilisateur supprimant un message est bien son propriétaire (par exemple)
+- Ajouter des tokens anti-CSRF aux formulaires.
+- Mettre à jour le serveur web et le SGBD (SQLite)
+- Échapper/encoder les information récupéré depuis la base de donnée avant de les insérer dans une page HTML pour éviter les attaques XSS
+
+
 
 ## Spécifications
 
