@@ -58,7 +58,7 @@ include '../parts/header.php';
                     <?php foreach ($messages as $message): ?>
                         <div class="tab-pane" id="message-<?= $message['id'] ?>" role="tabpanel">
                             <div class="btn-group mb-4" role="group" aria-label="First group">
-                                <a href="deleteMessage.php?id=<?= $message['id'] ?>&token=<?= hash_hmac('sha256', 'deleteMessage.php', $_SESSION['internal_token']); ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Supprimer
+                                <a href="deleteMessage.php?id=<?= $message['id'] ?>&token=<?= hash_hmac('sha256', 'deleteMessage.php', $_SESSION['internal_token']); // [Project2] Protect form with anti-CSRF token ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Supprimer
                                 </a>
                             </div>
                             <div>
@@ -75,7 +75,7 @@ include '../parts/header.php';
                                 </div>
 
                                 <form action="answerMessage.php?id=<?= $message['id'] ?>" method="post">
-                                    <input type="hidden" name="token" value="<?= hash_hmac('sha256', 'answerMessage.php', $_SESSION['internal_token']); ?>" />
+                                    <input type="hidden" name="token" value="<?= hash_hmac('sha256', 'answerMessage.php', $_SESSION['internal_token']); // [Project2] Protect form with anti-CSRF token ?>" />
                                     <textarea id="content" name="content" class="form-control mb-3 mt-4" rows="3" required></textarea>
                                     <button type="submit" class="btn btn-primary float-right ml-3"><i class="fa fa-reply"></i> Répondre</button>
                                     <button type="reset" class="btn btn-secondary float-right"><i class="fa fa-broom"></i> Annuler</button>
@@ -93,7 +93,7 @@ include '../parts/header.php';
         <div class="modal-dialog">
             <div class="modal-content">
                 <form action="newMessage.php" method="post" class="needs-validation" novalidate>
-                    <input type="hidden" name="token" value="<?= hash_hmac('sha256', 'newMessage.php', $_SESSION['internal_token']); ?>" />
+                    <input type="hidden" name="token" value="<?= hash_hmac('sha256', 'newMessage.php', $_SESSION['internal_token']); // [Project2] Protect form with anti-CSRF token ?>" />
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-feather-alt"></i> Nouveau message
                         </h5>

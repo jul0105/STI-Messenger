@@ -47,7 +47,7 @@ include '../parts/header.php';
 
         <form action="<?= $edit ? "editUser.php?id=$id" : "newUserExec.php" ?>" method="post" class="needs-validation"
               novalidate>
-            <input type="hidden" name="token" value="<?= hash_hmac('sha256', ($edit ? "editUser.php" : "newUserExec.php"), $_SESSION['internal_token']); ?>" />
+            <input type="hidden" name="token" value="<?= hash_hmac('sha256', ($edit ? "editUser.php" : "newUserExec.php"), $_SESSION['internal_token']); // [Project2] Protect form with anti-CSRF token ?>" />
             <div class="form-group row">
                 <label for="username" class="col-sm-2 col-form-label">Pseudo</label>
                 <div class="col-sm-10">

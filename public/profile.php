@@ -25,7 +25,7 @@ include '../parts/header.php';
     <div class="container">
         <h2 class="text-center mb-4">Changer de mot de passe</h2>
         <form action="/editPassword.php?id=<?=$user->getId() ?>" method="post" class="w-50 mx-auto">
-            <input type="hidden" name="token" value="<?= hash_hmac('sha256', 'editPassword.php', $_SESSION['internal_token']); ?>" />
+            <input type="hidden" name="token" value="<?= hash_hmac('sha256', 'editPassword.php', $_SESSION['internal_token']); // [Project2] Protect form with anti-CSRF token  ?>" />
             <div class="form-group">
                 <label for="oldPassword">Ancien mot de passe</label>
                 <input type="password" id="oldPassword" name="oldPassword" class="form-control">

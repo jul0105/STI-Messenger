@@ -45,7 +45,7 @@ include '../parts/header.php';
                     <td><?= $user['status'] == STATUS_ACTIVE ? "Activé" : "Désactivé" ?></td>
                     <td>
                         <a href="newUser.php?id=<?= $user['id'] ?>" class="btn btn-warning"><i class="fa fa-pen"></i></a>
-                        <a href="deleteUser.php?id=<?= $user['id'] ?>&token=<?= hash_hmac('sha256', 'deleteUser.php', $_SESSION['internal_token']); ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                        <a href="deleteUser.php?id=<?= $user['id'] ?>&token=<?= hash_hmac('sha256', 'deleteUser.php', $_SESSION['internal_token']); // [Project2] Protect form with anti-CSRF token ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
