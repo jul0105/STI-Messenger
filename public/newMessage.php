@@ -12,6 +12,13 @@ require_once '../includes.php';
 
 Auth::restricted();
 
+// [Project2] Protect form with anti-CSRF token
+$calc = hash_hmac('sha256', 'newMessage.php', $_SESSION['internal_token']);
+if (!(hash_equals($calc, $_POST['token']))) {
+    setFlash('Token invalide.', 'danger');
+    redirect('index.php');
+}
+
 if(isset($_POST['recipient']) && isset($_POST['subject'])) {
     // [Project2] Sanitize input
     $recipient = sanitizeTextInput($_POST['recipient']);

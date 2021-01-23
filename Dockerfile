@@ -1,4 +1,4 @@
-FROM php:5.5-fpm
+FROM php:8-fpm
 
 RUN apt-get update && apt-get install -y \
       wget \
@@ -10,7 +10,7 @@ RUN apt-get install -y unzip libzip-dev libicu-dev && docker-php-ext-install pdo
 RUN docker-php-ext-install pdo_mysql
 
 # Xdebug
-RUN pecl install xdebug-2.5.5 && docker-php-ext-enable xdebug
+#RUN pecl install xdebug-2.5.5 && docker-php-ext-enable xdebug
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer

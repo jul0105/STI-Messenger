@@ -12,13 +12,20 @@ require_once '../includes.php';
 
 Auth::restricted();
 
+// [Project2] Protect form with anti-CSRF token
+$calc = hash_hmac('sha256', 'editPassword.php', $_SESSION['internal_token']);
+if (!(hash_equals($calc, $_POST['token']))) {
+    setFlash('Token invalide.', 'danger');
+    redirect('profile.php');
+}
+
 if(isset($_GET['id']) && isset($_POST['oldPassword']) && isset($_POST['newPassword']) && isset($_POST['newPasswordRepeat'])) {
     // [Project2] Sanitize input
     $id = sanitizeIntegerInput($_GET['id']);
 
     // [Project2] User cannot modify another user's password
     if ($id != Auth::getInstance()->getUser()->getId()) {
-        setFlash('Mot de passe modifié avec succès.');
+        setFlash('Accès interdit.', 'danger');
         redirect('profile.php');
         return;
     }

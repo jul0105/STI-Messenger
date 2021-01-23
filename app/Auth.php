@@ -33,6 +33,7 @@ class Auth {
      * @param $username
      * @param $password
      * @return boolean True if login succeed
+     * @throws \Exception
      */
     public function login($username, $password) {
         // [Projet2] Prepare SQL statement
@@ -44,6 +45,9 @@ class Auth {
             // [Projet2] Store strongly hashed password
             if (password_verify($password, $user['password']) && $user['status'] == STATUS_ACTIVE) {
                 $_SESSION['user'] = $user;
+
+                // [Project2] Protect form with anti-CSRF token
+                $_SESSION['internal_token'] = bin2hex(random_bytes(32));
                 return true;
             }
         }
