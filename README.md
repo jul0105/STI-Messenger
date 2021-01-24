@@ -14,7 +14,7 @@ cd STI-Messenger/
 make init
 ```
 
-Cette commande permet de construire et lancer les conteneurs ainsi que d'installer les dépendances nécessaires. Lorsque l'initialisation est terminée, vous pouvez accéder à l'application avec l'URL suivant : **http://localhost:8080/**.
+Cette commande permet de construire et lancer les conteneurs ainsi que d'installer les dépendances nécessaires. Lorsque l'initialisation est terminée, vous pouvez accéder à l'application avec l'URL suivant : **http://localhost/**.
 
 ### Start/Stop
 
